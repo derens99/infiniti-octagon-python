@@ -2,6 +2,8 @@ import os
 import dotenv
 dotenv.load_dotenv()
 
+from typing import Tuple
+
 from .RWYAPICaller import RWYAPICaller
 from .SystemEndpoint import SystemEndpoint
 from .DeviceEndpoint import DeviceEndpoint
@@ -26,7 +28,7 @@ class InfinitiAPI:
         An instance of the VisibleLensEndpoint class.
     """
 
-    def __init__(self, base_url, auth=None):
+    def __init__(self, base_url: str, auth: Tuple[str, str]):
         self.api_caller = RWYAPICaller(base_url, auth)
         self.system = SystemEndpoint(self.api_caller)
         self.device = DeviceEndpoint(self.api_caller)
