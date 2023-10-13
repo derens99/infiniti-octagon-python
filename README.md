@@ -17,10 +17,14 @@ TODO - PyPi hosting coming soon
 ## Quick Start
 
 ```python
-from octagon_api_wrapper import VisibleLensEndpoint, RWYAPICaller
+from infiniti_api.InfinitiAPI import InfinitiAPI
 
 # Initialize the API caller with the base URL
-api = InfinitiAPI("https://api.infiniti-eo.com/")
+octagon_ip = os.environ.get('OCTAGON_IP')
+user = os.environ.get('OCTAGON_USERNAME')
+pass = os.environ.get('OCTAGON_PASSWORD')
+
+api = InfinitiAPI(f"https://{octagon_ip}", auth=(user, pass))
 
 # Fetch the zoom and focus values of the visible lens
 zoom, focus = api.visible.get_visiblelens()
